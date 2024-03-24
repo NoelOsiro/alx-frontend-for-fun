@@ -7,9 +7,14 @@ Usage: python3 markdown2html.py input.md output.html
 """
 
 import sys
+import os
 
 
 def convert_markdown_to_html(input_file, output_file):
+    if not os.path.isfile(input_file):
+        print(f"Missing {input_file}", file=sys.stderr)
+        sys.exit(1)
+
     with open(input_file, 'r') as md_file:
         markdown_text = md_file.read()
         html_content = parse_markdown(markdown_text)
