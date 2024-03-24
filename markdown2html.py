@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Basic Markdown to HTML Converter
+Improved Markdown to HTML Converter
 
 Usage: python3 markdown2html.py input.md output.html
 """
@@ -41,20 +41,30 @@ def parse_markdown(markdown_text):
 
 
 def parse_markdown_line(markdown_line):
-    if markdown_line.startswith('#'):
-        level = len(markdown_line.split()[0])
-        return f'<h{level}>{markdown_line[level+1:]}</h{level}>'
+    if markdown_line.startswith('# '):
+        level = markdown_line.count('# ')
+        return f'<h{level}>{markdown_line[(level+1):]}</h{level}>'
     elif markdown_line.startswith('* '):
         return f'<li>{markdown_line[2:]}</li>'
     elif markdown_line.startswith('1. '):
         return f'<li>{markdown_line[3:]}</li>'
+    elif markdown_line.startswith('## '):
+        return f'<h2>{markdown_line[3:]}</h2>'
+    elif markdown_line.startswith('### '):
+        return f'<h3>{markdown_line[4:]}</h3>'
+    elif markdown_line.startswith('#### '):
+        return f'<h4>{markdown_line[5:]}</h4>'
+    elif markdown_line.startswith('##### '):
+        return f'<h5>{markdown_line[6:]}</h5>'
+    elif markdown_line.startswith('###### '):
+        return f'<h6>{markdown_line[7:]}</h6>'
     else:
         return f'<p>{markdown_line}</p>'
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: ./markdown2html.py README.md README.html")
+        print("Usage: python3 markdown2html.py input.md output.html")
         sys.exit(1)
 
     input_file = sys.argv[1]
