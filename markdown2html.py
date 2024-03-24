@@ -1,73 +1,96 @@
 #!/usr/bin/python3
 
 """
-Improved Markdown to HTML Converter
-
-Usage: python3 markdown2html.py input.md output.html
+Markdown script using python.
 """
-
 import sys
-import os
+import os.path
+import re
+import hashlib
 
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        print('Usage: ./markdown2html.py README.md README.html',
+              file=sys.stderr)
+        exit(1)
 
-def convert_markdown_to_html(input_file, output_file):
-    if not os.path.isfile(input_file):
-        print(f"Missing {input_file}", file=sys.stderr)
-        sys.exit(1)
+    if not os.path.isfile(sys.argv[1]):
+        print('Missing {}'.format(sys.argv[1]), file=sys.stderr)
+        exit(1)
 
-    with open(input_file, 'r') as md_file:
-        markdown_text = md_file.read()
-        html_content = parse_markdown(markdown_text)
-        with open(output_file, 'w') as html_file:
-            html_file.write(html_content)
+    with open(sys.argv[1]) as read:
+        with open(sys.argv[2], 'w') as html:
+            unordered_start, ordered_start, paragraph = False, False, False
+            # bold syntax
+            for line in read:
+                line = line.replace('**', '<b>', 1)
+                line = line.replace('**', '</b>', 1)
+                line = line.replace('__', '<em>', 1)
+                line = line.replace('__', '</em>', 1)
 
+                # md5
+                md5 = re.findall(r'\[\[.+?\]\]', line)
+                md5_inside = re.findall(r'\[\[(.+?)\]\]', line)
+                if md5:
+                    line = line.replace(md5[0], hashlib.md5(
+                        md5_inside[0].encode()).hexdigest())
 
-def parse_markdown(markdown_text):
-    lines = markdown_text.split('\n')
-    html_lines = []
-    in_code_block = False
+                # remove the letter C
+                remove_letter_c = re.findall(r'\(\(.+?\)\)', line)
+                remove_c_more = re.findall(r'\(\((.+?)\)\)', line)
+                if remove_letter_c:
+                    remove_c_more = ''.join(
+                        c for c in remove_c_more[0] if c not in 'Cc')
+                    line = line.replace(remove_letter_c[0], remove_c_more)
 
-    for line in lines:
-        if line.startswith('```'):
-            in_code_block = not in_code_block
-            html_lines.append(line)
-        elif in_code_block:
-            html_lines.append(line)
-        else:
-            html_line = parse_markdown_line(line)
-            html_lines.append(html_line)
+                length = len(line)
+                headings = line.lstrip('#')
+                heading_num = length - len(headings)
+                unordered = line.lstrip('-')
+                unordered_num = length - len(unordered)
+                ordered = line.lstrip('*')
+                ordered_num = length - len(ordered)
+                # headings, lists
+                if 1 <= heading_num <= 6:
+                    line = '<h{}>'.format(
+                        heading_num) + headings.strip() + '</h{}>\n'.format(
+                        heading_num)
 
-    return '\n'.join(html_lines)
+                if unordered_num:
+                    if not unordered_start:
+                        html.write('<ul>\n')
+                        unordered_start = True
+                    line = '<li>' + unordered.strip() + '</li>\n'
+                if unordered_start and not unordered_num:
+                    html.write('</ul>\n')
+                    unordered_start = False
 
+                if ordered_num:
+                    if not ordered_start:
+                        html.write('<ol>\n')
+                        ordered_start = True
+                    line = '<li>' + ordered.strip() + '</li>\n'
+                if ordered_start and not ordered_num:
+                    html.write('</ol>\n')
+                    ordered_start = False
 
-def parse_markdown_line(markdown_line):
-    if markdown_line.startswith('# '):
-        level = markdown_line.count('# ')
-        return f'<h{level}>{markdown_line[(level+1):]}</h{level}>'
-    elif markdown_line.startswith('* '):
-        return f'<li>{markdown_line[2:]}</li>'
-    elif markdown_line.startswith('1. '):
-        return f'<li>{markdown_line[3:]}</li>'
-    elif markdown_line.startswith('## '):
-        return f'<h2>{markdown_line[3:]}</h2>'
-    elif markdown_line.startswith('### '):
-        return f'<h3>{markdown_line[4:]}</h3>'
-    elif markdown_line.startswith('#### '):
-        return f'<h4>{markdown_line[5:]}</h4>'
-    elif markdown_line.startswith('##### '):
-        return f'<h5>{markdown_line[6:]}</h5>'
-    elif markdown_line.startswith('###### '):
-        return f'<h6>{markdown_line[7:]}</h6>'
-    else:
-        return f'<p>{markdown_line}</p>'
+                if not (heading_num or unordered_start or ordered_start):
+                    if not paragraph and length > 1:
+                        html.write('<p>\n')
+                        paragraph = True
+                    elif length > 1:
+                        html.write('<br/>\n')
+                    elif paragraph:
+                        html.write('</p>\n')
+                        paragraph = False
 
+                if length > 1:
+                    html.write(line)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python3 markdown2html.py input.md output.html")
-        sys.exit(1)
-
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-
-    convert_markdown_to_html(input_file, output_file)
+            if unordered_start:
+                html.write('</ul>\n')
+            if ordered_start:
+                html.write('</ol>\n')
+            if paragraph:
+                html.write('</p>\n')
+    exit (0)
