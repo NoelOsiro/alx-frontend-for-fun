@@ -41,6 +41,6 @@
 ---
 
 ## Author
-* **Noel Osiro**  - [
+* **Noel Osiro**  - 
   [<img src="https://img.shields.io/badge/Twitter-1DA1F2.svg?&style=plastic&logo=twitter&logoColor=white"/>](https://twitter.com/NoelOsiro)
   [<img src="https://img.shields.io/badge/GitHub-181717.svg?&style=plastic&logo=github&logoColor=white"/>](https://github.com/NoelOsiro)
