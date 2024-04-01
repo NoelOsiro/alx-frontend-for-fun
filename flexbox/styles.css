@@ -178,23 +178,19 @@
     margin-right: auto;
   }
   
-  /* Grid
-      ============================= */
-  
-  ul.row {
+  /* Grid section within your CSS */
+
+ul.row {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex; /* Changed to flex for row class */
   }
   
-  .row::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
+  /* Removed .row::after declaration */
   
   [class*='col-'] {
-    float: left;
+    /* Removed float: left */
     padding: 0.5rem;
   }
   
