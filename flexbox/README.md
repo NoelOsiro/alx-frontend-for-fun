@@ -1,46 +1,68 @@
-# Web Stack Specialization - Front-end
-![Holberton logo](https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png)
-> Web Stack - Front-end
+# Flexbox
 
-## Description :bulb:
-* Advanced HTML/CSS
-* Developer Tools
-* SCSS
-* Flexbox
-* Responsive Design
-* Accesibility
-* Working with Designers
-* Design Implementation
-* Bootstrap
-* Advanced Javascript
-* Advanced JQuery
-* Cookies & Local Storage
-* ES6
-* Webpack
-* Building Portfolio Applications
+## Description:bulb:
+Different possible properties using CSS Flexbox layout
 
-## Technologies & Tools :computer:
+* What is Flexbox?
+* How to convert float positioning to a flex display
+* How to horizontally and vertically align elements using Flexbox
+* The difference between the main and cross axes
+* Properties that work on flex elements vs flex container
+* Shorthands for flex
+* How to create a new page with flex in mind
 
-![NPM](https://img.shields.io/badge/≡-NPM-CB3837?&style=flat-square&logo=npm&logoColor=CB3837&labelColor=282828)
-![Git](https://img.shields.io/badge/≡-Git-F05032?logo=git&style=flat-square&labelColor=282828)
-![Figma](https://img.shields.io/badge/≡-Figma-F24E1E?logo=Figma&style=flat-square&labelColor=282828)
-![HTML5](https://img.shields.io/badge/≡-HTML5-E34F26?&style=flat-square&logo=html5&labelColor=282828)
-![Ubuntu](https://img.shields.io/badge/≡-Ubuntu-E95420?&style=flat-square&logo=Ubuntu&labelColor=282828)
-![JavaScript](https://img.shields.io/badge/≡-JavaScript-F7DF1E?logo=javascript&style=flat-square&labelColor=282828)
-![GNU_Bash](https://img.shields.io/badge/≡-GNU_Bash-4EAA25?logo=GNU-Bash&style=flat-square&labelColor=282828)
-![Node.js](https://img.shields.io/badge/≡-Node.js-339933?logo=Node.js&style=flat-square&labelColor=282828)
-![Vim](https://img.shields.io/badge/≡-Vim-019733?logo=Vim&style=flat-square&logoColor=019733&labelColor=282828)
-![Pop!_OS](https://img.shields.io/badge/≡-Pop!_OS-48B9C7?logo=Pop_OS&style=flat-square&labelColor=282828)
-![VS_Code](https://img.shields.io/badge/≡-VS_Code-007ACC?logo=visual-studio-code&style=flat-square&logoColor=007ACC&labelColor=282828)
-![CSS3](https://img.shields.io/badge/≡-CSS3-1572B6?logo=CSS3&style=flat-square&logoColor=1572B6&labelColor=282828)
-![jQuery](https://img.shields.io/badge/≡-jQuery-0769AD?logo=jQuery&style=flat-square&logoColor=0769AD&labelColor=282828)
-![Bootstrap](https://img.shields.io/badge/≡-Bootstrap-7952B3?logo=Bootstrap&style=flat-square&labelColor=282828)
-![GitHub](https://img.shields.io/badge/≡-GitHub-181717?logo=GitHub&style=flat-square&labelColor=282828)
-![JSON](https://img.shields.io/badge/≡-JSON-000000?logo=JSON&style=flat-square&labelColor=282828)
+---
+
+## Resources:books:
+Read or watch:
+* [A complete Guide to Flexbox | CSS-Tricks] (https://intranet.hbtn.io/rltoken/L8LGfjgBbkWIFn1iRr8fHQ)
+* [Flexbox Froggy - A game for learning CSS flexbox] (https://intranet.hbtn.io/rltoken/wrW7jiGsqCenlUwTEyDj8A)
+* [Flexbox Defense] (https://intranet.hbtn.io/rltoken/cnJWcWrkMB80n4XN8QXbGw)
+* [Flexbox Cheatsheet] (https://intranet.hbtn.io/rltoken/XNhvdZUi7WwizPrSRzxaqQ)
+* [CSS Flexible Box Layout - CSS: Cascading Style Sheets | MDN] (https://intranet.hbtn.io/rltoken/v_s7tHHrr1Nb2TyzCvrx1Q)
+* [afonsopacifer/awesome-flexbox: A curated list of CSS Flexible Box Layout Module or only Flexbox] (https://intranet.hbtn.io/rltoken/Y2lIdR7uvVpQ9NRIEzJdGw)
+* [Build with Flexbox] (https://intranet.hbtn.io/rltoken/BK-btD_tXCrW76o2XD9VQQ)
+* [Flexplorer] (https://intranet.hbtn.io/rltoken/ohwl6NowC67_ejCOcengmA)
+* [CSS Flexible Box Layout Module Level 1] (https://intranet.hbtn.io/rltoken/v8wWIB7dkx727ZusAhZTRA)
+* [FLEX: A simple visual cheatsheet for flexbox] (https://intranet.hbtn.io/rltoken/zQ3BAUi2w8bz5qKNfNxemQ)
+
+---
+
+### [0. Add display flex](./0-index.html)
+
+### [1. Add new classes on sections](./1-index.html)
+
+### [2. Reverse order Latest news cards](./2-index.html)
+
+### [3. Simplify services list](./3-index.html)
+
+### [4. Playing around with the spacing between flex service items](./4-index.html)
+
+### [5. Flexify the header](./5-index.html)
+
+### [6. Flexify the navbar](./6-index.html)
+
+### [7. Align center logo and navbar](./7-index.html)
+
+### [8. Simplify the hero banner](./8-index.html)
+
+### [9. Better alignment about us](./9-index.html)
+
+### [10.  Creating an article by fixing issues and updating hero styles](./10-article.html)
+
+### [11. Update the new hero banner](./11-article.html)
+
+### [12. The structure of the main article](./12-article.html)
+
+### [13. The meta list inside the aside section](./13-article.html)
+
+### [14. Add the share social icons](./14-article.html)
+
+### [15. Finalizing the cherry on the cake that is the article](./100-article.html)
+
+### [16. Timemachine boxes!](./101-style.css)
 
 ---
 
 ## Author
-* **Noel Osiro**  - 
-  [<img src="https://img.shields.io/badge/Twitter-1DA1F2.svg?&style=plastic&logo=twitter&logoColor=white"/>](https://twitter.com/NoelOsiro)
-  [<img src="https://img.shields.io/badge/GitHub-181717.svg?&style=plastic&logo=github&logoColor=white"/>](https://github.com/NoelOsiro)
+* **Joseph Mahiuha** - [Mahiuha](https://github.com/Mahiuha)
