@@ -65,4 +65,4 @@ Read or watch:
 ---
 
 ## Author
-* **Joseph Mahiuha** - [Mahiuha](https://github.com/Mahiuha)
+* **Noel Osiro** - [Mahiuha](https://github.com/Noel Osiro)
